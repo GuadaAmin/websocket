@@ -1,0 +1,17 @@
+if productos.length > 0
+    table
+        thead
+            tr
+                th="Nombre"
+                th="Precio" 
+                th="Imagen"
+        tbody
+            //- each prod in productos
+            each productos
+                tr
+                    td=this.nombre
+                    td=this.precio
+                    td
+                        img(src=this.url alt=this.nombre)
+else
+    h2="No hay productos"
