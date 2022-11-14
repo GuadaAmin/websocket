@@ -1,4 +1,4 @@
-<% if(productos.length > 0) { %>
+<% if(getProductos.length > 0) { %>
   <table>
     <thead>
         <tr>
@@ -8,7 +8,7 @@
         </tr>
     </thead>
     <tbody>
-    <% for (const prod of productos) { %>
+    <% for (const prod of getProductos) { %>
       <tr>
         <td><%=this.nombre%></td>
         <td><%=this.apellido%></td>
@@ -17,6 +17,12 @@
       <% }; %>
     </tbody>
   </table>
+  <a href="/">
+    <button>Añadir más productos</button>
+  </a>
 <% } else{ %>
   <h2>No hay productos</h2>
+  <a href="/">
+    <button>Añadir productos</button>
+  </a>
 <% }; %>
