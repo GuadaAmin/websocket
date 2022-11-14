@@ -8,12 +8,12 @@ if getProductos.length > 0
         tbody
             each prod in getProductos
                 tr
-                    td=this.nombre
-                    td=this.precio
+                    td=prod.nombre
+                    td=prod.precio
                     td
-                        img(src=this.url alt=this.nombre)
-        a(href="/")
-            button="Añadir más productos"
+                        img(src=prod.url alt=prod.nombre)
+    a(href="/")
+        button="Añadir más productos"
 else
     h2="No hay productos"
     a(href="/")

@@ -6,28 +6,25 @@ const productos = new ProductosContainer();
 
 app.engine('handlebars', exphbs.engine());
 app.set('view engine', 'handlebars');
-app.set('views', './views');
+app.set('views', 'views');
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-let form = Boolean(true)
-
 app.get('/', (req, res) => {
-  form = true;
   res.render('form'); 
 })
 
-app.get('/productos', (req, res) => {
-  form = false;
-  const getProductos = productos.getAll();
+app.get('/productos', async (req, res) => {
+  const getProductos = await productos.getAll();
   res.render('table', {getProductos});
 })
-app.post('/', (req, res) => {
-  form = true;
+
+app.post('/productos', async (req, res) => {
   const { nombre, precio, url } = req.body;
-  const newProduct = productos.save(nombre, precio, url);
-  res.render('table', {newProduct});
+  await productos.save({nombre, precio, url});
+  const getProductos = await productos.getAll();
+  res.render('table', {getProductos});
 })
 
 const port = 8080;

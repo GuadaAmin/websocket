@@ -1,4 +1,4 @@
-{{#if getProductos.length > 0}}
+{{#if getProductos}}
     <table>
         <thead>
             <tr>
@@ -8,7 +8,7 @@
             </tr>
         </thead>
         <tbody>
-            {{#each prod in getProductos}}
+            {{#each getProductos}}
             <tr>
                 <td>{{this.nombre}}</td>
                 <td>{{this.precio}}</td>

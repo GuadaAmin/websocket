@@ -14,23 +14,21 @@ let form = Boolean(true)
 
 app.get('/', (req, res) => {
   form = true;
-  res.render('../views/main.pug', {form}); 
+  res.render('../views/main', {form}); 
 })
 
-app.get('/productos', (req, res) => {
+app.get('/productos', async (req, res) => {
   form = false;
-  const getProductos = productos.getAll();
-  res.render('../views/main.pug', {getProductos, form});
+  const getProductos = await productos.getAll();
+  res.render('../views/main', {getProductos, form});
 })
-app.post('/', (req, res) => {
-  form = true;
-  // const { nombre, precio, url } = req.body;
-  // const newProduct = productos.save(nombre, precio, url);
-  // res.json({newProduct});
-  // res.render('../views/main.pug', {form})
-  const { body } = req;
-  const newProduct = productos.save(body);
-  res.json(newProduct, {form});
+
+app.post('/productos', async (req, res) => {
+  form = false;
+  const { nombre, precio, url } = req.body;
+  await productos.save({nombre, precio, url});
+  const getProductos = await productos.getAll();
+  res.render('../views/main', {getProductos, form});
 })
 
 const port = 8080;
