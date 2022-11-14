@@ -1,0 +1,28 @@
+{{#if getProductos.length > 0}}
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Imagen</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each prod in getProductos}}
+            <tr>
+                <td>{{this.nombre}}</td>
+                <td>{{this.precio}}</td>
+                <td><img src={{this.url}} alt={{this.nombre}}></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <a href="/">
+        <button>Añadir más productos</button>
+    </a>
+{{else}}
+    <h2>No hay productos</h2>
+    <a href="/">
+        <button>Añadir productos</button>
+    </a>
+{{/if}}

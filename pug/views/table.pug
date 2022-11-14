@@ -1,4 +1,4 @@
-if productos.length > 0
+if getProductos.length > 0
     table
         thead
             tr
@@ -6,12 +6,15 @@ if productos.length > 0
                 th="Precio" 
                 th="Imagen"
         tbody
-            //- each prod in productos
-            each productos
+            each prod in getProductos
                 tr
                     td=this.nombre
                     td=this.precio
                     td
                         img(src=this.url alt=this.nombre)
+        a(href="/")
+            button="Añadir más productos"
 else
     h2="No hay productos"
+    a(href="/")
+            button="Añadir productos"
