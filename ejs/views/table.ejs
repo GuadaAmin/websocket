@@ -1,4 +1,4 @@
-<% if(getProductos.length > 0) { %>
+<% if(getProductos) { %>
   <table>
     <thead>
         <tr>
@@ -10,9 +10,9 @@
     <tbody>
     <% for (const prod of getProductos) { %>
       <tr>
-        <td><%=this.nombre%></td>
-        <td><%=this.apellido%></td>
-        <td><%=this.edad%></td>
+        <td><%=prod.nombre%></td>
+        <td><%=prod.precio%></td>
+        <td><img src="<%=prod.url%>" alt="<%=prod.nombre%>"></td>
       </tr>
       <% }; %>
     </tbody>

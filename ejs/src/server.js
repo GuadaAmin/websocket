@@ -10,26 +10,25 @@ app.set('views', 'views');
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-let form = Boolean(true)
+let form = Boolean(true);
 
 app.get('/', (req, res) => {
   form = true;
-  res.render('../views/main.ejs', {form}); 
+  res.render('../views/main', {form}); 
 })
 
-app.get('/productos', (req, res) => {
+app.get('/productos', async (req, res) => {
   form = false;
-  const getProductos = productos.getAll();
-  res.render('../views/main.ejs', {getProductos, form});
+  const getProductos = await productos.getAll();
+  res.render('../views/main', {getProductos, form});
 })
-app.post('/', async (req, res) => {
-  form = true;
+
+app.post('/productos', async (req, res) => {
+  form = false;
   const { nombre, precio, url } = req.body;
-  const newProduct = await productos.save(nombre, precio, url);
-  res.json('../views/main.ejs', {newProduct, form});
-  // const { body } = req;
-  // const newProduct = productos.save(body);
-  // res.render(newProduct, {form});
+  await productos.save({nombre, precio, url});
+  const getProductos = await productos.getAll();
+  res.render('../views/main', {getProductos, form});
 })
 
 const port = 8080;
