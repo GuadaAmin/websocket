@@ -1,19 +1,20 @@
-if getProductos.length > 0
-    table
-        thead
-            tr
-                th="Nombre"
-                th="Precio" 
-                th="Imagen"
-        tbody
-            each prod in getProductos
+if getProductos.length > 0 
+    div(class="elementoCentrado")
+        table
+            thead
                 tr
-                    td=prod.nombre
-                    td=prod.precio
-                    td
-                        img(src=prod.url alt=prod.nombre)
-    a(href="/")
-        button="Añadir más productos"
+                    th="Nombre"
+                    th="Precio" 
+                    th="Imagen"
+            tbody
+                each prod in getProductos
+                    tr
+                        td=prod.nombre
+                        td=prod.precio
+                        td
+                            img(src=prod.url alt=prod.nombre width="100px")
+    a(href="/"  class="elementoCentrado")
+        button(class="tableButton")="Añadir más productos"
 else
     h2="No hay productos"
     a(href="/")

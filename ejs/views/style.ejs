@@ -1,7 +1,13 @@
 <style>
+    .elementoCentrado {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     * {
         font-family: Arial, Helvetica, sans-serif;
     }
+/* form styles */
     h1 {
         color: rgb(166, 107, 201);
     }
@@ -34,9 +40,25 @@
     button:hover {
         background-color: rgb(130, 85, 156);
     }
-    .elementoCentrado {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+/* table styles */
+    table {
+        width: 80%;
+        margin: 1.5rem;
+        border-spacing: 0;
+    }
+    thead {
+        background-color: rgb(166, 107, 201);
+        color: white;
+        padding: 1rem;
+        text-align: center;
+    }
+    td, th {
+        border: .1px solid rgb(0, 0, 0);
+        padding: .5rem;
+        width: 33%;
+        text-align: center;
+    }
+    .tableButton {
+        width: 80%;
     }
 </style>

@@ -1,21 +1,21 @@
 <h1 class="elementoCentrado">Ingrese un producto:</h1>
-<div class="elementoCentrado">
+<div class="elementoCentrado"> 
   <form action="/productos" method="post" name="productos">
     <fieldset>
       
       <div>
         <label for="nombre"><b>Nombre</b></label>
-        <input type="text" placeholder="Ingrese el nombre del producto" id="nombre" name="nombre">
+        <input type="text" placeholder="Ingrese el nombre del producto" id="nombre" name="nombre" required>
       </div>
 
       <div>
         <label for="precio"><b>Precio</b></label>
-        <input type="text" placeholder="Ingrese el precio del producto" id="precio" name="precio">
+        <input type="text" placeholder="Ingrese el precio del producto" id="precio" name="precio" required>
       </div>
   
       <div>
         <label for="url"><b>Foto URL</b></label>
-        <input type="url" placeholder="Ingrese la URL de su foto" id="url" name="url">
+        <input type="url" placeholder="Ingrese la URL de su foto" id="url" name="url" required>
       </div>
 
       <button>Enviar</button>
