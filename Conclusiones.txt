@@ -1,0 +1,4 @@
+Tras trabajar con los tres motores de plantilla, llegué a la conclusión de que si tuviera que realizar un proyecto con alguno de estos tres motores, usaría Pug. 
+Sentí que Handlebars tenía demasiadas reglas que seguir en cuanto a la distribución de las carpetas, que me confundió un poco al principio.
+EJS me pareció más fácil pero la sintaxis me confundió un poco también.
+Pug fue el más fácil y cómodo de usar. La sintaxis es simple y pude armar mi proyecto sin ningún problema.
