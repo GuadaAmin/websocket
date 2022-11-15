@@ -1,0 +1,62 @@
+.elementoCentrado {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+/* form styles */
+h1 {
+    color: rgb(166, 107, 201);
+}
+form {
+    width: 50vw;
+}
+input {
+    width: 98%;
+    padding: .3rem;
+    margin: .3rem 0;
+}
+fieldset {
+    padding: 1rem;
+    border-radius: .7rem;
+}
+button {
+    padding: .3rem .8rem;
+    margin: .3rem 0;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: rgb(166, 107, 201);
+    border: none;
+    border-radius: .3rem;
+    box-shadow: 0 .2rem #999;
+    flex-direction: row;
+}
+button:hover {
+    background-color: rgb(130, 85, 156);
+}
+/* table styles */
+table {
+    width: 80%;
+    margin: 1.5rem;
+    border-spacing: 0;
+}
+thead {
+    background-color: rgb(166, 107, 201);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+td, th {
+    border: .1px solid rgb(0, 0, 0);
+    padding: .5rem;
+    width: 33%;
+    text-align: center;
+}
+.tableButton {
+    width: 80%;
+}
