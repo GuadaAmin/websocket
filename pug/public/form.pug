@@ -1,7 +1,7 @@
 h1(class="elementoCentrado")="Ingrese un producto:"
 div(class="elementoCentrado")
-    form(action="/productos" method="post" name="productos")
-        fieldset 
+    form(action="/" method="post" name="productos")
+        fieldset  
             div
                 label(for="nombre")="Nombre"
                 input(type="text" placeholder="Ingrese el nombre del producto" id="nombre" name="nombre" required)
@@ -16,5 +16,5 @@ div(class="elementoCentrado")
 
             button="Enviar"
         
-            a(href="/productos")
+            a(href="/")
                 button="Ver productos"
