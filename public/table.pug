@@ -1,4 +1,4 @@
-if getProductos.length > 0 
+if getProductos
     div(class="elementoCentrado")
         table
             thead
@@ -13,9 +13,7 @@ if getProductos.length > 0
                         td=prod.precio
                         td
                             img(src=prod.url alt=prod.nombre width="100px")
-    a(href="/"  class="elementoCentrado")
-        button(class="tableButton")="Añadir más productos"
 else
-    h2="No hay productos"
-    a(href="/")
-            button="Añadir productos"
+    div(class="elementoCentrado")
+        div(class="noHayProductosContainer")
+            h2(class="elementoCentrado")="No hay productos"

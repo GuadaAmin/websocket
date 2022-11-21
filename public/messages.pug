@@ -1,0 +1,21 @@
+//- data.map((elem) => {
+//- return (`
+//-      <div>
+//-          <p style="color: blue;"><strong>${elem.email}</strong><p/>
+//-          <p style="color: brown;">${elem.date}</p>
+//-          <p style="color: green;"><em>${elem.mensaje}</em></p>
+//-      </div>
+//-      `);
+//-  }).join(' ');
+
+if messages
+    div(class="elementoCentrado")
+        div
+            each elem in messages
+                p(style="color: blue;")
+                    strong=`${elem.email}`
+                p(style="color: brown;")
+                    strong=`${elem.date}`
+                p(style="color: green;")
+                    strong=`${elem.mensaje}`
+            

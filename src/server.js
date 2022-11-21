@@ -1,8 +1,12 @@
 const express = require('express');
 const pug = require('pug');
 const app = express();
+
 const ProductosContainer = require('../productos.js');
 const productos = new ProductosContainer();
+
+const MensajesContainer = require('../mensajesChat.js');
+const mensajesChat = new MensajesContainer();
 
 const { Server: HttpServer } = require('http');
 const { Server: IOServer } = require('socket.io');
@@ -16,27 +20,33 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
 
-let mensajes = [];
+let messages = [];
 
-io.on('connection', socket => {
+io.on('connection', async (socket) => {
   //tabla productos
   console.log ("Registrando productos");
-  //socket.emit('nuevosProductos', nuevosProductos);
   
   socket.on('new-product', nuevoProducto => {
-    // productos.push(nuevoProducto);
-    // io.sockets.emit('nuevosProductos', nuevosProductos);
     productos.save(nuevoProducto)
     io.sockets.emit("productos", productos.getAll)
   });
 
   //mensajes
-  socket.emit('mensajes', mensajes);
+  socket.emit('messages', messages);
   socket.on('new-message', data => {
-    mensajes.push(data);
-    io.sockets.emit('mensajes', mensajes);
+    messages.push(data);
+    io.sockets.emit('messages', messages);
   })
+
+  const message = await mensajesChat.getMessages()
+    socket.emit('messages', message)
+    socket.on('new-message', async (data) => {
+        await mensajesChat.save(data)
+        const message2 = await mensajesChat.getMessages()
+        io.sockets.emit('messages', message2);
+   });
 })
+
 
 app.get('/', (req, res) => {
   res.sendFile('main.pug', { root: __dirname })
