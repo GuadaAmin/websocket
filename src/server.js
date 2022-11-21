@@ -14,17 +14,28 @@ app.set('views', 'public');
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-
 app.use(express.static(__dirname + '/public'));
 
+let mensajes = [];
+
 io.on('connection', socket => {
+  //tabla productos
   console.log ("Registrando productos");
-  socket.emit('nuevosProductos', nuevosProductos);
+  //socket.emit('nuevosProductos', nuevosProductos);
   
-  socket.on('new-product', data => {
-      productos.push(data);
-      io.sockets.emit('nuevosProductos', nuevosProductos);
+  socket.on('new-product', nuevoProducto => {
+    // productos.push(nuevoProducto);
+    // io.sockets.emit('nuevosProductos', nuevosProductos);
+    productos.save(nuevoProducto)
+    io.sockets.emit("productos", productos.getAll)
   });
+
+  //mensajes
+  socket.emit('mensajes', mensajes);
+  socket.on('new-message', data => {
+    mensajes.push(data);
+    io.sockets.emit('mensajes', mensajes);
+  })
 })
 
 app.get('/', (req, res) => {

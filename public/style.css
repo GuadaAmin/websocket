@@ -6,11 +6,13 @@
 * {
     font-family: Arial, Helvetica, sans-serif;
 }
+
 /* form styles */
+
 h1 {
     color: rgb(166, 107, 201);
 }
-form {
+.form {
     width: 50vw;
 }
 input {
@@ -39,7 +41,9 @@ button {
 button:hover {
     background-color: rgb(130, 85, 156);
 }
+
 /* table styles */
+
 table {
     width: 80%;
     margin: 1.5rem;

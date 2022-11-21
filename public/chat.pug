@@ -1,0 +1,7 @@
+h1(class='elementoCentrado')="Chat"
+form(onsubmit=`return addMessage(this)` class='elementoCentrado')
+    fieldset
+        input(type="email" id="email" name="email" placeholder="Ingresa tu email")
+        input(type="text" id="mensajeChat" name="mensaje" placeholder="Escribe tu mensaje")
+        button="Enviar"
+div(id="messages")
