@@ -88,9 +88,11 @@ window.onload = () => {
     socket.on('menssages', function(data) {
         render(data);
     });
-
-    document.getElementById('chatButton').addEventListener('submit', (error) => {
-        error.preventDefault()
+n
+    const formChat = document.getElementById('formChat')
+    formChat.addEventListener('submit', (e) => {
+        e.preventDefault()
+        console.log("Error es:", e)
         addMessage()
     })
 }
