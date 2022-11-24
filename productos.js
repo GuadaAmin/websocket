@@ -48,7 +48,7 @@ class Productos {
             return newObj;
         } catch (error) {
             throw new Error('Ocurrió un error0')
-        }
+        } 
     }
     
     async update (id, product) {

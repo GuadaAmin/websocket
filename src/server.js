@@ -3,10 +3,10 @@ const pug = require('pug');
 const app = express();
 
 const ProductosContainer = require('../productos.js');
-const productos = new ProductosContainer();
+const productos = new ProductosContainer("productos.txt");
 
 const MensajesContainer = require('../mensajesChat.js');
-const mensajesChat = new MensajesContainer();
+const mensajesChat = new MensajesContainer('mensajes.txt');
 
 const { Server: HttpServer } = require('http');
 const { Server: IOServer } = require('socket.io');
@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
 
-let messages = [];
+//let messages = [];
 
 io.on('connection', async (socket) => {
   //tabla productos
@@ -32,19 +32,20 @@ io.on('connection', async (socket) => {
   });
 
   //mensajes
-  socket.emit('messages', messages);
-  socket.on('new-message', data => {
-    messages.push(data);
-    io.sockets.emit('messages', messages);
+  socket.emit('messages', await mensajesChat.getMessages());
+  socket.on('new-message', async data => {
+    console.log("La data es:", data)
+    await mensajesChat.save(data);
+    io.sockets.emit('messages', await mensajesChat.getMessages());
   })
 
-  const message = await mensajesChat.getMessages()
-    socket.emit('messages', message)
-    socket.on('new-message', async (data) => {
-        await mensajesChat.save(data)
-        const message2 = await mensajesChat.getMessages()
-        io.sockets.emit('messages', message2);
-   });
+  // const message = await mensajesChat.getMessages()
+  //   socket.emit('messages', message)
+  //   socket.on('new-message', async (data) => {
+  //       await mensajesChat.save(data)
+  //       const message2 = await mensajesChat.getMessages()
+  //       io.sockets.emit('messages', message2);
+  //  });
 })
 
 
